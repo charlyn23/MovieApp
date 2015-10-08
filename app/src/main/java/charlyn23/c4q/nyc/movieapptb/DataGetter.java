@@ -1,9 +1,5 @@
 package charlyn23.c4q.nyc.movieapptb;
 
-/**
- * Created by charlynbuchanan on 10/8/15.
- */
-
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -93,6 +89,8 @@ public class DataGetter {
         String poster;
         String description;
         String date;
+        String vote;
+        String popularity;
 
         try {
             JSONObject object = new JSONObject(json);
@@ -105,6 +103,8 @@ public class DataGetter {
                 poster = movie.getString("poster_path");
                 description = movie.getString("overview");
                 date = movie.getString("release_date");
+                vote = movie.getString("vote_average");
+                popularity = movie.getString("popularity");
 
                 Log.d("movie data = " , title + " " + poster + "\n " + description);
             }
@@ -121,4 +121,3 @@ public class DataGetter {
 
 
 }
-

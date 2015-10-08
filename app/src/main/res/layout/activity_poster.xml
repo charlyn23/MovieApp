@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:id="@+id/posterView"
+        android:layout_below="@+id/titleView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:id="@+id/titleView"
+        android:fontFamily="sans-serif-light"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/summaryView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif-light"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textAlignment="viewStart"
+        android:layout_gravity="start"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/voteView"
+        android:layout_toRightOf="@+id/posterView"
+        android:layout_toEndOf="@+id/posterView"
+        android:text="Date"
+        android:fontFamily="sans-serif-light"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:paddingBottom="10dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vote"
+        android:id="@+id/voteView"
+        android:fontFamily="sans-serif-light"
+        android:textSize="20sp"
+        android:layout_below="@+id/popularityView"
+        android:layout_toRightOf="@+id/posterView"
+        android:layout_toEndOf="@+id/posterView"
+        android:textColor="@android:color/white"
+        android:paddingBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popularity"
+        android:id="@+id/popularityView"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/titleView"
+        android:layout_toRightOf="@+id/posterView"
+        android:layout_toEndOf="@+id/posterView"
+        android:fontFamily="sans-serif-light"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+
+        />
+
+
+
+</RelativeLayout>

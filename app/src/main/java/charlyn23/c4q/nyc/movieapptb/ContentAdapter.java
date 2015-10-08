@@ -3,6 +3,7 @@ package charlyn23.c4q.nyc.movieapptb;
 /**
  * Created by charlynbuchanan on 10/8/15.
  */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,34 +12,39 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by charlynbuchanan on 10/7/15.
  */
-public class ContentAdapter extends ArrayAdapter<JSONObject>{
+public class ContentAdapter extends ArrayAdapter<Movie> {
 
-    final ArrayList<JSONObject> movies = DataGetter.getMovieData();
-    static JSONObject movie;
-    Context context;
-    final Context homeContext = new HomeActivity.MyContextWrapper(HomeActivity.context).getHomeContext();
+    private List<Movie> movieList;
 
-    public ContentAdapter(Context context, int resource, ArrayList<JSONObject> movies) {
+    public ContentAdapter(Context context, int resource, List<Movie> movies) {
         super(context, R.layout.list_row, movies);
-
-
+        this.movieList = movies;
     }
 
-    static class ViewHolder {
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+        notifyDataSetChanged();
+    }
+
+    class ViewHolder {
         TextView title;
         ImageView listImage;
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public int getCount() {
+        return movieList.size();
+    }
+
+    @Override
+    public View getView(int position, View view, final ViewGroup parent) {
         ViewHolder holder;
 
         if (view == null) {
@@ -47,33 +53,22 @@ public class ContentAdapter extends ArrayAdapter<JSONObject>{
             holder.title = (TextView) view.findViewById(R.id.title);
             holder.listImage = (ImageView) view.findViewById(R.id.list_image);
             view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
         }
 
+        if (movieList != null && movieList.size() > position) {
 
-        else
-            holder = (ViewHolder)view.getTag();
+            Movie currentMovie = movieList.get(position);
 
-        for (int i = 0; i < movies.size(); i++ ) {
-            JSONObject movieItem = getItem(position);
+            holder.title.setText(currentMovie.getTitle());
 
-            try {
-                String title = movieItem.getString("title");
-                holder.title.setText(title);
-                String imageLink = movieItem.getString("poster_path");
+            Picasso.with(getContext()).load(currentMovie.getImageLink()).into(holder.listImage);
 
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
         }
-
-
 
         return view;
 
     }
 
-
-
 }
-
